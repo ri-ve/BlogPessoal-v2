@@ -1,0 +1,7 @@
+#img-bg{
+    background-image: url('../../assets/img/earth-1149733_960_720.webp');
+     min-height: 695px;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+}
