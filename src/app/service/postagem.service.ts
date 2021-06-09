@@ -8,6 +8,9 @@ import { Postagem } from '../model/Postagem';
   providedIn: 'root'
 })
 export class PostagemService {
+  getByIdPostagem(id: number) {
+    throw new Error('Method not implemented.');
+  }
   constructor(private http:HttpClient) { }
   token= {
     headers: new HttpHeaders().set('Authorization', environment.token)
@@ -16,8 +19,18 @@ export class PostagemService {
   getAllPostagem():Observable<Postagem[]>{
     return this.http.get<Postagem[]>('http://localhost:8080/postagens',this.token)
   }
+  getByIdPostagens(id: number):Observable<Postagem>{
+      return this.http.get<Postagem>(`http://localhost:8080/postagens/${id}',this.token`)
+  }
   postPostagem(postagem:Postagem):Observable<Postagem>{
     return this.http.post<Postagem>('http://localhost:8080/postagens',postagem, this.token)
+
+  }
+  putPostagem(postagem:Postagem):Observable<Postagem>{
+    return this.http.put<Postagem>('http://localhost:8080/postagens',postagem, this.token)
+  }
+  deletePostagem(id: number){
+    return this.http.get<Postagem>(`http://localhost:8080/postagens/${id}`, this.token)
 
   }
 }
